@@ -15,8 +15,10 @@ public class IndevScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject pollito = Instantiate(chickenPrefab, transform.position, Quaternion.identity);
+            Vector3 randomPosition = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
+            GameObject pollito = Instantiate(chickenPrefab, transform.position + randomPosition, Quaternion.identity);
             pollito.GetComponent<ChickenController>().InitializeRandom();
+            pollito.GetComponent<ChickenGrowth>().Initialize(GrowthStage.Egg);
         }
     }
 }

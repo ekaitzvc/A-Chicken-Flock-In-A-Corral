@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab052bc3c22e219459a75d1118641a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IndevScript
-  chickenPrefab: {fileID: 4294995290039346074, guid: 1c49cf1bf13594e4bb1a1a9b200667c4, type: 3}
+  chickenPrefab: {fileID: 1405241503065213804, guid: b7d76e6c5305a4c4783940146d614077, type: 3}
 --- !u!4 &842589227
 Transform:
   m_ObjectHideFlags: 0
