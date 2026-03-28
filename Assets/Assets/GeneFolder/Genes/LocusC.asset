@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
   geneName: LocusC
   possibleAlleles:
-  - NonWhite
-  - White
+  - NonWhite (C)
+  - White (c)
   dominanceOrder:
-  - NonWhite
-  - White
+  - NonWhite (C)
+  - White (c)
   mutationRate: 0.01
   mutationBias: 0
   biasTargetAllele: 
   biasStrength: 0.8
   isSexLinked: 0
+  genComplexityRandRate: 0

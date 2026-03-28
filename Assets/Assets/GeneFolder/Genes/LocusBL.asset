@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
   geneName: LocusBL
   possibleAlleles:
-  - Grey/Blue(BL)
-  - NonGrey/Blue(bl)
+  - Grey/Blue (BL)
+  - NonGrey/Blue (bl)
   dominanceOrder: []
   mutationRate: 0.01
   mutationBias: 0
   biasTargetAllele: 
   biasStrength: 0.8
   isSexLinked: 0
-  isOdd: 1
+  genComplexityRandRate: 1

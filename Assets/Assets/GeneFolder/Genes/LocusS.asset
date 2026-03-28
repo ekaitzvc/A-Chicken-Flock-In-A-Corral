@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
   geneName: LocusS
   possibleAlleles:
-  - Silver
-  - Golden
+  - Silver (S)
+  - Golden (s+)
   dominanceOrder:
-  - Silver
-  - Golden
+  - Silver (S)
+  - Golden (s+)
   mutationRate: 0.01
   mutationBias: 0
   biasTargetAllele: 
   biasStrength: 0.8
-  isSexLinked: 0
+  isSexLinked: 1
+  genComplexityRandRate: 0
