@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
   geneName: LocusE
   possibleAlleles:
-  - FullPatern (E)
-  - Birchen (ER)
-  - Perdiz (e+/ep)
-  dominanceOrder:
-  - FullPatern (E)
-  - Birch (ER)
-  - Perdiz (e+/ep)
+  - Full
+  - Birchen
+  - Perdiz
+  dominanceOrder: []
   mutationRate: 0.01
   mutationBias: 0
   biasTargetAllele: 

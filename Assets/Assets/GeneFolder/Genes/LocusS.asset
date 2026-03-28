@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
   geneName: LocusS
   possibleAlleles:
-  - Silver (S)
-  - Golden (s+)
-  dominanceOrder:
-  - Silver (S)
-  - Golden (s+)
+  - Silver
+  - Golden
+  dominanceOrder: []
   mutationRate: 0.01
   mutationBias: 0
   biasTargetAllele: 

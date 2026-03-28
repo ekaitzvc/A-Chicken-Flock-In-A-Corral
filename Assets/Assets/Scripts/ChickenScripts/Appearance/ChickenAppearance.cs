@@ -83,12 +83,12 @@ public class ChickenAppearance : MonoBehaviour
         // LocusE: extension de melanina
         switch (locusE)
         {
-            case "FullBlack":
+            case "Full":
                 baseBodyColor = Color.black;
                 neckColor = Color.black;
                 break;
 
-            case "NoNeck":
+            case "Birchen":
                 // Cuello desnudo / sin plumas de color en cuello
                 baseBodyColor = colorBase;
                 neckColor = new Color(0.9f, 0.7f, 0.6f); // Piel rosada
