@@ -42,6 +42,13 @@ public class GeneDefinition : ScriptableObject
              "Los machos (ZZ) tendran dos alelos normalmente.")]
     public bool isSexLinked;
 
+    [Header("Rareza")]
+    [Tooltip("Como de exclusivo es este gen." +
+            "Esto puede hacer que al generar un gallina aleatoria tiendan al NORMAL HOMOCIGOTO para" +
+            "que haya genes mas EXLCUSIVOS que al principio de la partida no se encuentran.")]
+    [Range(0f, 1f)]
+    public float genComplexityRandRate;
+
     /// <summary>
     /// Devuelve un alelo aleatorio de los posibles (para primera generacion).
     /// </summary>

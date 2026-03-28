@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edee1db473dfbc4b8b90e68c2d97385, type: 3}
   m_Name: LocusBL
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
-  geneName: 
-  possibleAlleles: []
+  geneName: LocusBL
+  possibleAlleles:
+  - Grey/Blue(BL)
+  - NonGrey/Blue(bl)
   dominanceOrder: []
   mutationRate: 0.01
   mutationBias: 0
   biasTargetAllele: 
   biasStrength: 0.8
   isSexLinked: 0
+  isOdd: 1
