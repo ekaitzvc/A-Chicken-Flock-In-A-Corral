@@ -17,13 +17,32 @@ public class ChickenAppearance : MonoBehaviour
 {
     [Header("Referencias de sprites/capas")]
     [Tooltip("SpriteRenderer principal del cuerpo")]
-    public SpriteRenderer bodyRenderer;
+    [HideInInspector] public SpriteRenderer colorRenderer;
+    public GameObject color;
+
+    [HideInInspector] public SpriteRenderer locusCRenderer;
+    public GameObject locusC;
+
+    [HideInInspector] public SpriteRenderer locusERenderer;
+    public GameObject locusE;
+
+    [HideInInspector] public SpriteRenderer locusSRenderer;
+    public GameObject locusS;
+
+    [HideInInspector] public SpriteRenderer locusBLRenderer;
+    public GameObject locusBL;
 
     [Tooltip("SpriteRenderer de la cresta")]
-    public SpriteRenderer crestRenderer;
+    [HideInInspector] public SpriteRenderer crestRenderer;
+    public GameObject crest;
 
     [Tooltip("SpriteRenderer para patron de cuello")]
-    public SpriteRenderer neckPatternRenderer;
+    [HideInInspector] public SpriteRenderer neckPatternRenderer;
+    public GameObject neckPattern;
+
+    public GameObject eggModel;
+    public SpriteRenderer eggRenderer;
+
 
     [Header("Configuracion de escala por tamano")]
     public float miniScale = 0.5f;
@@ -36,6 +55,20 @@ public class ChickenAppearance : MonoBehaviour
     [HideInInspector] public Color baseBodyColor;
     [HideInInspector] public Color neckColor;
     [HideInInspector] public float chickenScale;
+
+
+    public void SetBodyPartObjetcs()
+    {
+        //eggModel = GameObject.Find("EggModel");
+        eggRenderer = eggModel.GetComponent<SpriteRenderer>();
+        colorRenderer = color.GetComponent<SpriteRenderer>();
+        crestRenderer = crest.GetComponent<SpriteRenderer>();
+        neckPatternRenderer = neckPattern.GetComponent<SpriteRenderer>();
+        locusCRenderer = locusC.GetComponent<SpriteRenderer>();
+        locusERenderer = locusE.GetComponent<SpriteRenderer>();
+        locusSRenderer = locusS.GetComponent<SpriteRenderer>();
+        locusBLRenderer = locusBL.GetComponent<SpriteRenderer>();
+    }
 
     /// <summary>
     /// Aplica la apariencia visual basada en el genoma.
@@ -56,7 +89,12 @@ public class ChickenAppearance : MonoBehaviour
         {
             ApplyAdultAppearance(genome);
         }
-        // En stage Egg no se aplica apariencia de gallina
+        else
+        {
+            ApplyEggAppearance(genome);
+        }
+
+        Debug.Log("Apariencia Cambiada!!");
     }
 
     /// <summary>
@@ -66,15 +104,20 @@ public class ChickenAppearance : MonoBehaviour
     {
         string locusC = genome.GetExpressedAllele("LocusC");
         string locusE = genome.GetExpressedAllele("LocusE");
-        string locusBL = genome.GetExpressedAllele("LocusBL");
+        string[] locusBL = genome.GetBothAlleles("LocusBL");
         string locusS = genome.GetExpressedAllele("LocusS");
 
         // LocusC: White es dominante y suprime todo color
         if (locusC == "White")
         {
+            locusCRenderer.enabled = true;
             baseBodyColor = Color.white;
             neckColor = Color.white;
             return;
+        }
+        else
+        {
+            locusCRenderer.enabled = false;
         }
 
         // Color base segun LocusS (sex-linked en aves reales)
@@ -89,14 +132,23 @@ public class ChickenAppearance : MonoBehaviour
                 break;
 
             case "Birchen":
-                // Cuello desnudo / sin plumas de color en cuello
+                // Patron Birchen: diferente entre sexo
+                if (genome.sex == ChickenSex.Male)
+                {
+                    //sprit birchen macho
+                }
+                else
+                {
+                    //sprit birchen hembra
+                }
+
                 baseBodyColor = colorBase;
                 neckColor = new Color(0.9f, 0.7f, 0.6f); // Piel rosada
                 break;
 
             case "Perdiz":
             default:
-                // Patron perdiz: cuerpo del color base, cuello mas oscuro
+                // Patron perdiz
                 baseBodyColor = colorBase;
                 neckColor = colorBase * 0.6f;
                 neckColor.a = 1f;
@@ -104,10 +156,19 @@ public class ChickenAppearance : MonoBehaviour
         }
 
         // LocusBL: dilusion azul/gris
-        if (locusBL == "Grey")
+        if (locusBL[0] == "Grey" && locusBL[1] == "Grey")
         {
+            //Es roto
             baseBodyColor = Color.Lerp(baseBodyColor, Color.grey, 0.5f);
             neckColor = Color.Lerp(neckColor, Color.grey, 0.4f);
+        }
+        else if (locusBL[0] != locusBL[1])
+        {
+            //Es gris
+        }
+        else
+        {
+            //No es diluido, mantiene colores normales
         }
     }
 
@@ -120,12 +181,12 @@ public class ChickenAppearance : MonoBehaviour
 
         switch (size)
         {
-            case "Mini":       chickenScale = miniScale; break;
-            case "Small":      chickenScale = smallScale; break;
-            case "Big":        chickenScale = bigScale; break;
+            case "Mini": chickenScale = miniScale; break;
+            case "Small": chickenScale = smallScale; break;
+            case "Big": chickenScale = bigScale; break;
             case "SuperLarge": chickenScale = superLargeScale; break;
             case "Medium":
-            default:           chickenScale = mediumScale; break;
+            default: chickenScale = mediumScale; break;
         }
     }
 
@@ -138,9 +199,9 @@ public class ChickenAppearance : MonoBehaviour
         Color chickColor = Color.Lerp(baseBodyColor, new Color(1f, 0.95f, 0.4f), 0.6f);
         float chickScale = chickenScale * 0.4f;
 
-        if (bodyRenderer != null)
+        if (colorRenderer != null)
         {
-            bodyRenderer.color = chickColor;
+            colorRenderer.color = chickColor;
         }
 
         if (neckPatternRenderer != null)
@@ -161,9 +222,9 @@ public class ChickenAppearance : MonoBehaviour
     /// </summary>
     private void ApplyAdultAppearance(Genome genome)
     {
-        if (bodyRenderer != null)
+        if (colorRenderer != null)
         {
-            bodyRenderer.color = baseBodyColor;
+            colorRenderer.color = baseBodyColor;
         }
 
         if (neckPatternRenderer != null)
@@ -180,9 +241,9 @@ public class ChickenAppearance : MonoBehaviour
             float crestScale = 1.0f;
             switch (crest)
             {
-                case "Small":      crestScale = 0.6f; break;
-                case "Medium":     crestScale = 1.0f; break;
-                case "Big":        crestScale = 1.4f; break;
+                case "Small": crestScale = 0.6f; break;
+                case "Medium": crestScale = 1.0f; break;
+                case "Big": crestScale = 1.4f; break;
                 case "SuperLarge": crestScale = 1.8f; break;
             }
             crestRenderer.transform.localScale = Vector3.one * crestScale;
@@ -190,4 +251,10 @@ public class ChickenAppearance : MonoBehaviour
 
         transform.localScale = Vector3.one * chickenScale;
     }
+
+    private void ApplyEggAppearance(Genome genome)
+    {
+        eggRenderer.sprite = Resources.Load<Sprite>("Egg/" + genome.GetExpressedAllele("EggColorLocus"));
+    }
+
 }

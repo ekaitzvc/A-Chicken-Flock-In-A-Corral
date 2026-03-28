@@ -39,6 +39,7 @@ public class ChickenGrowth : MonoBehaviour
         currentStage = startStage;
         stageTimer = 0f;
         ApplyStageVisuals();
+        gameObject.GetComponent<ChickenAppearance>().SetBodyPartObjetcs();
     }
 
     void Update()
@@ -58,6 +59,11 @@ public class ChickenGrowth : MonoBehaviour
         {
             TransitionTo(GrowthStage.Adult);
         }
+
+        /*if (currentStage == GrowthStage.Chick)
+        {
+            
+        }*/
     }
 
     /// <summary>

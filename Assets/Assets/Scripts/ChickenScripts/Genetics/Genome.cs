@@ -40,6 +40,16 @@ public class Genome
         return "";
     }
 
+    public string[] GetBothAlleles(string geneName)
+    {
+        Gene gene = GetGene(geneName);
+        if (gene != null)
+        {
+            return gene.GetBothAlleles();
+        }
+        return new string[] { "", "" };
+    }
+
     /// <summary>
     /// Shortcut: comprueba si la gallina tiene un alelo especifico en un gen.
     /// </summary>

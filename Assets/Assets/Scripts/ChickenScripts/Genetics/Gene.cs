@@ -72,7 +72,25 @@ public class Gene
         }
 
         // Si no hay orden definido, devolver el primero
+        foreach (string aleles in definition.possibleAlleles)
+        {
+            if (aleles == allele1) return allele1;
+            if (aleles == allele2) return allele2;
+        }
+
         return allele1;
+    }
+
+    public string[] GetBothAlleles()
+    {
+        if (IsHemizygous())
+        {
+            return new string[] { allele1 };
+        }
+        else
+        {
+            return new string[] { allele1, allele2 };
+        }
     }
 
     /// <summary>
