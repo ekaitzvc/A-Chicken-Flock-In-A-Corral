@@ -87,16 +87,19 @@ public class ChickenGrowth : MonoBehaviour
             case GrowthStage.Egg:
                 if (eggModel != null) eggModel.SetActive(true);
                 if (chickenModel != null) chickenModel.SetActive(false);
+                Debug.Log("EGG");
                 break;
 
             case GrowthStage.Chick:
                 if (eggModel != null) eggModel.SetActive(false);
                 if (chickenModel != null) chickenModel.SetActive(true);
+                Debug.Log("CHICK");
                 break;
 
             case GrowthStage.Adult:
                 if (eggModel != null) eggModel.SetActive(false);
                 if (chickenModel != null) chickenModel.SetActive(true);
+                Debug.Log("ADULT");
                 break;
         }
     }

@@ -71,7 +71,7 @@ MonoBehaviour:
   currentStage: 0
   stageTimer: 0
   eggModel: {fileID: 8557808127121353589}
-  chickenModel: {fileID: 3782208237654478106, guid: 47f5c1a4963d18b4cb2082cc8296fc68, type: 3}
+  chickenModel: {fileID: 3171829165167687107}
 --- !u!114 &986442468686631309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +588,11 @@ PrefabInstance:
 --- !u!4 &52716455533982912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1784211458097351705, guid: 47f5c1a4963d18b4cb2082cc8296fc68, type: 3}
+  m_PrefabInstance: {fileID: 1763585351143176409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3171829165167687107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782208237654478106, guid: 47f5c1a4963d18b4cb2082cc8296fc68, type: 3}
   m_PrefabInstance: {fileID: 1763585351143176409}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4580237769323477693 stripped
