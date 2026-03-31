@@ -18,7 +18,7 @@ MonoBehaviour:
   - Birchen
   - Perdiz
   dominanceOrder: []
-  mutationRate: 0.01
+  mutationRate: 0.05
   mutationBias: 0
   biasTargetAllele: 
   biasStrength: 0.8

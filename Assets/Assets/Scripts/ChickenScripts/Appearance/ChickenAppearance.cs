@@ -41,7 +41,7 @@ public class ChickenAppearance : MonoBehaviour
     public GameObject neckPattern;
 
     public GameObject eggModel;
-    public SpriteRenderer eggRenderer;
+    [HideInInspector] public SpriteRenderer eggRenderer;
 
 
     [Header("Configuracion de escala por tamano")]
@@ -111,8 +111,9 @@ public class ChickenAppearance : MonoBehaviour
         if (locusC == "White")
         {
             locusCRenderer.enabled = true;
-            baseBodyColor = Color.white;
-            neckColor = Color.white;
+            /*baseBodyColor = Color.white;
+            neckColor = Color.white;*/
+            locusCRenderer.sprite = Resources.Load<Sprite>("Chicken/LocusE/Full");
             return;
         }
         else
@@ -127,12 +128,14 @@ public class ChickenAppearance : MonoBehaviour
         switch (locusE)
         {
             case "Full":
-                baseBodyColor = Color.black;
-                neckColor = Color.black;
+                /*baseBodyColor = Color.black;
+                neckColor = Color.black;*/
+                locusERenderer.sprite = Resources.Load<Sprite>("Chicken/LocusE/Full");
                 break;
 
             case "Birchen":
                 // Patron Birchen: diferente entre sexo
+                locusERenderer.sprite = Resources.Load<Sprite>("Chicken/LocusE/Birchen");
                 if (genome.sex == ChickenSex.Male)
                 {
                     //sprit birchen macho
@@ -149,6 +152,7 @@ public class ChickenAppearance : MonoBehaviour
             case "Perdiz":
             default:
                 // Patron perdiz
+                locusERenderer.sprite = Resources.Load<Sprite>("Chicken/LocusE/Perdiz");
                 baseBodyColor = colorBase;
                 neckColor = colorBase * 0.6f;
                 neckColor.a = 1f;
@@ -165,6 +169,7 @@ public class ChickenAppearance : MonoBehaviour
         else if (locusBL[0] != locusBL[1])
         {
             //Es gris
+            locusERenderer.color = Color.grey;
         }
         else
         {

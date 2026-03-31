@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edee1db473dfbc4b8b90e68c2d97385, type: 3}
   m_Name: Crowd
   m_EditorClassIdentifier: Assembly-CSharp::GeneDefinition
-  geneName: 
-  possibleAlleles: []
+  geneName: Crowd
+  possibleAlleles:
+  - Seguidora
+  - Independiente
+  - Rebelde
   dominanceOrder: []
-  mutationRate: 0.01
-  mutationBias: 0
+  mutationRate: 0.1
+  mutationBias: 1
   biasTargetAllele: 
-  biasStrength: 0.8
+  biasStrength: 0.95
   isSexLinked: 0
   genComplexityRandRate: 0
